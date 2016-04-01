@@ -111,7 +111,7 @@ public class ControllerPlace {
 		if (daoResponse.getStatus() == StatusUpdate.UPDATED){
 			Place placeUpdated = daoResponse.getResponse();
 			placeUpdated.setId(placeId);
-			return Response.status(Status.ACCEPTED).entity(ResourceUtil.getJson(placeUpdated, Place.class)).build();
+			return Response.status(Status.ACCEPTED).entity(placeUpdated).build();
 		}else if (daoResponse.getStatus() == StatusUpdate.NOT_FOUND){
 			return Response.status(Status.NOT_FOUND).build();
 		}
