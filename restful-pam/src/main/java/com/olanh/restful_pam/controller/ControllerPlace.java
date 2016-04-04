@@ -49,9 +49,10 @@ public class ControllerPlace {
 		//return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
 
-	/* READ
-	 * The method below is optional if the parameters grow fast
-	 * public String getPlaces(@BeanParam BeanPlace beanPlace){}
+	/** 
+	 * <b>READ</b><br>
+	 * The method below is optional if the parameters grow fast<br>
+	 * public String getPlaces(@BeanParam BeanPlace beanPlace) { }
 	*/
 	@GET
 	public Response getPlaces(@QueryParam("city") String city, @Context UriInfo uriInfo) throws URISyntaxException {
