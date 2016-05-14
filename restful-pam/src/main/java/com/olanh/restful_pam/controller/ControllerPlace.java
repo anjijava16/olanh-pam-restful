@@ -82,7 +82,7 @@ public class ControllerPlace {
 		for (Place place : daoResponse.getResponse()){
 			place.addLink(this.getUriForSelf(uriInfo, place),"self");
 		}
-		return Response.serverError().entity(ResourceUtil.getJson(daoResponse.getResponse(), Places.class)).build();
+		return Response.ok().entity(ResourceUtil.getJson(daoResponse.getResponse(), Places.class)).build();
 		//return Response.serverError().build();
 	}
 
@@ -100,7 +100,7 @@ public class ControllerPlace {
 		}
 		// TEMP
 		daoResponse.getResponse().addLink("www.com","self");
-		return Response.serverError().entity(daoResponse.getResponse()).build();
+		return Response.ok().entity(daoResponse.getResponse()).build();
 		//return Response.serverError().build();
 	}
 
@@ -139,6 +139,12 @@ public class ControllerPlace {
 	@Path("/{placeId}/schedule")
 	public ControllerSchedule getControllerSchedule() {
 		return new ControllerSchedule();
+	}
+	
+	// MenuResource
+	@Path("/{placeId}/menuitem")
+	public ControllerMenuItem getControllerMenuItem() {
+		return new ControllerMenuItem();
 	}
 
 	// Private Methods
