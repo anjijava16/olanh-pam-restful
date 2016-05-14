@@ -29,7 +29,6 @@ import com.olanh.pam_dataaccess.hibernate.DAOSchedule;
 import com.olanh.pam_dataaccess.util.DAOResponseUtil;
 import com.olanh.restful_pam.util.ResourceUtil;
 
-@Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ControllerSchedule {
