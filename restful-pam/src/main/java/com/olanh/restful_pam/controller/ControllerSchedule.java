@@ -63,7 +63,7 @@ public class ControllerSchedule {
 		// TEMP
 		daoResponse.getResponse().addLink(this.getUriForSelf(uriInfo, daoResponse.getResponse()),"selfOffline");
 		daoResponse.getResponse().addLink(this.getUriForSelfPlace(uriInfo, placeId),"via");
-		return Response.serverError().entity(daoResponse.getResponse()).build();
+		return Response.ok().entity(daoResponse.getResponse()).build();
 		//return Response.serverError().build();
 	}
 
