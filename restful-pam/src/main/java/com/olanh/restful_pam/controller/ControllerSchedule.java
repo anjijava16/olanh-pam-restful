@@ -44,7 +44,7 @@ public class ControllerSchedule {
 			URI uri = uriInfo.getAbsolutePathBuilder().path(scheduleAdded.getId() + "").build();
 			return Response.created(uri).status(Status.CREATED).entity(scheduleAdded).build();
 		}
-		return Response.status(Status.INTERNAL_SERVER_ERROR).entity(daoResponse.getResponse()).build(); // TEMP
+		return Response.status(Status.OK).entity(daoResponse.getResponse()).build(); // TEMP
 		//return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
 
@@ -79,8 +79,8 @@ public class ControllerSchedule {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 		// TEMP
-		schedule.setId(placeId);
-		return Response.serverError().entity(schedule).build();
+		;
+		return Response.ok().entity(daoResponse.getResponse()).build();
 		//return Response.serverError().build();
 	}
 

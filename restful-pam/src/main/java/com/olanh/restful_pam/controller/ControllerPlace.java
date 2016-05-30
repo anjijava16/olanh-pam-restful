@@ -45,7 +45,7 @@ public class ControllerPlace {
 			URI uri = uriInfo.getAbsolutePathBuilder().path(placeAdded.getId() + "").build();
 			return Response.created(uri).status(Status.CREATED).entity(placeAdded).build();
 		}
-		return Response.status(Status.INTERNAL_SERVER_ERROR).entity(ResourceUtil.getJson(daoResponse.getResponse(), Place.class)).build(); // TEMP
+		return Response.status(Status.OK).entity(ResourceUtil.getJson(daoResponse.getResponse(), Place.class)).build(); // TEMP
 		//return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
 
@@ -118,7 +118,7 @@ public class ControllerPlace {
 		}
 		// TEMP
 		place.setId(placeId);
-		return Response.serverError().entity(place).build();
+		return Response.ok().entity(place).build();
 		//return Response.serverError().build();
 	}
 
