@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
 
+import com.olanh.olanh_entities.LogService;
 import com.olanh.olanh_entities.Place;
 import com.olanh.olanh_entities.list.Places;
 import com.olanh.olanh_entities.status.StatusAdd;
@@ -35,17 +36,19 @@ import com.olanh.restful_pam.util.ResourceUtil;
 public class ControllerPlace {
 
 	private static DAOPlace daoPlace = new DAOPlace();
+	LogService log = new LogService();
 	
 	// CREATE
 	@POST
 	public Response addPlace(Place place, @Context UriInfo uriInfo) throws URISyntaxException {
+		log.writeOnFile("Restful addPlace - Begin");
 		DAOResponseUtil<StatusAdd, Place> daoResponse = ControllerPlace.daoPlace.addPlace(place);
 		if (daoResponse.getStatus() == StatusAdd.OK){
 			Place placeAdded = daoResponse.getResponse();
 			URI uri = uriInfo.getAbsolutePathBuilder().path(placeAdded.getId() + "").build();
 			return Response.created(uri).status(Status.CREATED).entity(placeAdded).build();
 		}
-		return Response.status(Status.OK).entity(ResourceUtil.getJson(daoResponse.getResponse(), Place.class)).build(); // TEMP
+		return Response.status(Status.OK).entity(daoResponse.getStatus() + daoResponse.getResponse().getName()).build(); // TEMP
 		//return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
 
@@ -100,8 +103,8 @@ public class ControllerPlace {
 		}
 		// TEMP
 		daoResponse.getResponse().addLink("www.com","self");
-		return Response.ok().entity(daoResponse.getResponse()).build();
-		//return Response.serverError().build();
+		//return Response.ok().entity(daoResponse.getResponse()).build();
+		return Response.serverError().build();
 	}
 
 	// UPDATE
@@ -118,8 +121,8 @@ public class ControllerPlace {
 		}
 		// TEMP
 		place.setId(placeId);
-		return Response.ok().entity(place).build();
-		//return Response.serverError().build();
+		//return Response.ok().entity(place).build();
+		return Response.serverError().build();
 	}
 
 	// DELETE

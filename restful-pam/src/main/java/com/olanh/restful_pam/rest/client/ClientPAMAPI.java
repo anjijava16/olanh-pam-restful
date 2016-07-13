@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 
 import com.olanh.olanh_entities.Place;
 
-import oracle.jdbc.driver.Message;
 
 public class ClientPAMAPI {
 	
