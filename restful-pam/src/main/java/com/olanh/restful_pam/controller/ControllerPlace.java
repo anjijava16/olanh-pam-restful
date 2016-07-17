@@ -48,8 +48,7 @@ public class ControllerPlace {
 			URI uri = uriInfo.getAbsolutePathBuilder().path(placeAdded.getId() + "").build();
 			return Response.created(uri).status(Status.CREATED).entity(placeAdded).build();
 		}
-		return Response.status(Status.OK).entity(daoResponse.getStatus() + daoResponse.getResponse().getName()).build(); // TEMP
-		//return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 	}
 
 	/** 
@@ -101,9 +100,6 @@ public class ControllerPlace {
 		} else if (daoResponse.getStatus() == StatusGet.NOT_FOUND){
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		// TEMP
-		daoResponse.getResponse().addLink("www.com","self");
-		//return Response.ok().entity(daoResponse.getResponse()).build();
 		return Response.serverError().build();
 	}
 
@@ -119,9 +115,6 @@ public class ControllerPlace {
 		}else if (daoResponse.getStatus() == StatusUpdate.NOT_FOUND){
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		// TEMP
-		place.setId(placeId);
-		//return Response.ok().entity(place).build();
 		return Response.serverError().build();
 	}
 
